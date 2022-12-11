@@ -1,0 +1,4 @@
+input/
+dataset/flickr8k/Images
+__pycache__/
+.DS_Store
