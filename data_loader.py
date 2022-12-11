@@ -2,6 +2,10 @@
 import os
 from collections import Counter
 import numpy as np
+<<<<<<< HEAD
+=======
+import pandas as pd
+>>>>>>> 5dca66cac6a594c72e2057ac3183ba3355a80692
 import spacy
 import torch
 from torch.nn.utils.rnn import pad_sequence
@@ -155,4 +159,8 @@ def get_data_loader(dataset,batch_size,shuffle=False,num_workers=1):
         collate_fn=collate_fn
     )
 
+<<<<<<< HEAD
     return data_loader
+=======
+    return data_loader
+>>>>>>> 5dca66cac6a594c72e2057ac3183ba3355a80692

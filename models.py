@@ -12,7 +12,11 @@ import torchvision.transforms as T
 class EncoderCNN(nn.Module):
     def __init__(self):
         super(EncoderCNN, self).__init__()
+<<<<<<< HEAD
         resnet = models.resnet50(pretrained=True)
+=======
+        resnet = models.resnet50(weights=models.ResNet50_Weights.DEFAULT)
+>>>>>>> 5dca66cac6a594c72e2057ac3183ba3355a80692
         for param in resnet.parameters():
             param.requires_grad_(False)
         
@@ -177,4 +181,8 @@ class EncoderDecoder(nn.Module):
     def forward(self, images, captions):
         features = self.encoder(images)
         outputs = self.decoder(features, captions)
+<<<<<<< HEAD
         return outputs
+=======
+        return outputs
+>>>>>>> 5dca66cac6a594c72e2057ac3183ba3355a80692

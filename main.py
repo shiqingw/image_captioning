@@ -187,7 +187,11 @@ if __name__ == '__main__':
          epoch_validation_loss/(batch_idx+1), format_time(epoch_end_time - epoch_start_time)))
         validation_loss += [epoch_validation_loss/(batch_idx+1)]
 
+<<<<<<< HEAD
     def test(epoch, test_loss, best_loss): 
+=======
+    def test(epoch, test_loss): 
+>>>>>>> 5dca66cac6a594c72e2057ac3183ba3355a80692
         model.eval()
         epoch_test_loss = 0
         epoch_start_time = time.time()
@@ -215,6 +219,7 @@ if __name__ == '__main__':
                     'state_dict':model.state_dict()
                 }
             torch.save(model_state, os.path.join(result_dir, "bahdanau_attention_model_state.pth"))
+<<<<<<< HEAD
         return best_loss
 
     start_time = time.time()
@@ -223,6 +228,14 @@ if __name__ == '__main__':
         train(epoch, train_loss)
         validate(epoch, validation_loss)
         best_loss = test(epoch, test_loss, best_loss)
+=======
+
+    start_time = time.time()
+    for epoch in range(num_epochs):
+        train(epoch, train_loss)
+        validate(epoch, validation_loss)
+        test(epoch, test_loss)
+>>>>>>> 5dca66cac6a594c72e2057ac3183ba3355a80692
 
         #generate the caption
         model.eval()
