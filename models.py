@@ -12,7 +12,7 @@ import torchvision.transforms as T
 class EncoderCNN(nn.Module):
     def __init__(self):
         super(EncoderCNN, self).__init__()
-        resnet = models.resnet50(models.ResNet50_Weights.DEFAULT)
+        resnet = models.resnet50(weights = models.ResNet50_Weights.DEFAULT)
         for param in resnet.parameters():
             param.requires_grad_(False)
         
