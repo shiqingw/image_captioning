@@ -219,6 +219,7 @@ if __name__ == '__main__':
                     'decoder_dim':decoder_dim,
                     'state_dict':model.state_dict()
                 }
+            print("==> Saving...")
             torch.save(model_state, os.path.join(result_dir, "bahdanau_attention_model_state.pth"))
         return best_loss
 
