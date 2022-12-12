@@ -61,7 +61,7 @@ if __name__ == '__main__':
     # testing the dataset class
     dataset =  FlickrDataset(
         root_dir = data_location+"/Images",
-        caption_file = data_location+"/Flickr8k.lemma.token.txt",
+        caption_file = data_location+"/Flickr8k.token.txt",
         transform=transforms
     )
 
