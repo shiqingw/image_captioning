@@ -108,10 +108,52 @@ class DecoderRNN(nn.Module):
             preds[:,s] = output
             alphas[:,s] = alpha  
         
-        
         return preds, alphas
     
-    def generate_caption(self,features,max_len=20,vocab=None):
+    def generate_caption_batch(self,features_all,max_len=20,vocab=None):
+        # Inference part
+        # Given the image features generate the captions
+        
+        batch_size = features_all.size(0)
+
+        captions = []
+        
+        for i in range(batch_size):
+            caption = []
+            alphas = []
+            features = features_all[i:i+1]
+            h, c = self.init_hidden_state(features)
+            #starting input
+            word = torch.tensor(vocab.stoi['<SOS>']).to(self.device).view(1,-1)
+            embeds = self.embedding(word)
+            for j in range(max_len):
+                alpha,context = self.attention(features, h)
+                
+                #store the apla score
+                alphas.append(alpha.cpu().detach().numpy())
+                
+                lstm_input = torch.cat((embeds[:, 0], context), dim=1)
+                h, c = self.lstm_cell(lstm_input, (h, c))
+                output = self.fcn(self.drop(h))
+                output = output.view(1,-1)
+                
+                #select the word with most val
+                predicted_word_idx = output.argmax(dim=1)
+                
+                #end if <EOS detected>
+                if vocab.itos[predicted_word_idx.item()] == "<EOS>":
+                    break
+                else: 
+                    #save the generated word
+                    caption.append(predicted_word_idx.item())
+                #send generated word as the next caption
+                embeds = self.embedding(predicted_word_idx.unsqueeze(0))
+            #covert the vocab idx to words and return sentence
+            captions.append([vocab.itos[idx] for idx in caption])
+        
+        return captions
+
+    def generate_caption_one(self,features,max_len=20,vocab=None):
         # Inference part
         # Given the image features generate the captions
         
@@ -124,7 +166,6 @@ class DecoderRNN(nn.Module):
         word = torch.tensor(vocab.stoi['<SOS>']).to(self.device).view(1,-1)
         embeds = self.embedding(word)
 
-        
         captions = []
         
         for i in range(max_len):
@@ -141,12 +182,13 @@ class DecoderRNN(nn.Module):
             #select the word with most val
             predicted_word_idx = output.argmax(dim=1)
             
-            #save the generated word
-            captions.append(predicted_word_idx.item())
-            
             #end if <EOS detected>
             if vocab.itos[predicted_word_idx.item()] == "<EOS>":
                 break
+
+            #save the generated word
+            captions.append(predicted_word_idx.item())
+
             
             #send generated word as the next caption
             embeds = self.embedding(predicted_word_idx.unsqueeze(0))

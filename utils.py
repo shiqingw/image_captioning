@@ -48,6 +48,24 @@ def plot_loss(train_loss, validation_loss, test_loss, loss_path):
     plt.savefig(loss_path, dpi=100)
     plt.close(fig)
 
+def plot_bleu_scores(bleu_dict, loss_path):
+    fig = plt.figure(figsize=(10, 6), dpi=100, frameon=True)
+    plt.rc('text', usetex=True)
+    plt.rc('font', family='serif')
+    ax = plt.subplot(111)
+    ax.set_xlabel("epoch", fontsize=50)
+    ax.set_ylabel("bleu scores", fontsize=50)
+    ax.plot(bleu_dict["bleu-1"], linewidth = 5, label="bleu-1")
+    ax.plot(bleu_dict["bleu-2"], linewidth = 5, label="bleu-2")
+    ax.plot(bleu_dict["bleu-3"], linewidth = 5, label="bleu-3")
+    ax.plot(bleu_dict["bleu-4"], linewidth = 5, label="bleu-4")
+    ax.tick_params(axis='both', which='major', labelsize=40)
+    ax.grid()
+    ax.legend(fontsize = 40)
+    plt.tight_layout()
+    plt.savefig(loss_path, dpi=100)
+    plt.close(fig)
+
 
 def format_time(seconds):
     days = int(seconds / 3600/24)

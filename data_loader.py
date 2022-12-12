@@ -85,7 +85,7 @@ class FlickrDataset(Dataset):
             self.vocab.build_vocab(self.captions)
         else: 
             self.vocab = vocab
-        
+
         self.inference_captions = self.group_captions(self.data)
     
     def __len__(self):
@@ -123,8 +123,7 @@ class FlickrDataset(Dataset):
                 with that picture
         """
         grouped_captions = {}
-
-        for line in data:
+        for line in data.split("\n"):
             caption_data = line.split()
             if len(caption_data)<2:
                 continue
@@ -166,8 +165,8 @@ class FlickrDataset(Dataset):
             batch_imgs = []
             batch_captions = []
 
-            # Increase index for the next batch
-            idx += batch_size
+            # # Increase index for the next batch
+            # idx += batch_size
 
             # Create a mini batch data
             for image_name, captions in caption_samples:
