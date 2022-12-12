@@ -126,6 +126,8 @@ class FlickrDataset(Dataset):
 
         for line in data:
             caption_data = line.split()
+            if len(caption_data)<2:
+                continue
             image_name, image_caption = caption_data[0], caption_data[1:]
             image_id = image_name.split(".")[0] + '.jpg'
             if image_id not in grouped_captions:

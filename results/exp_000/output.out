@@ -1,53 +1,107 @@
 nohup: ignoring input
 ==> device:  cuda
 ==> Vocab_size: 2366
+==> Epoch: 000
 Epoch: 000 | Loss: 4.020 | Training time: 1m29s
-Epoch: 000 | Loss: 3.419 | Validation time: 12s711ms
-Epoch: 000 | Loss: 3.391 | Testing time: 12s691ms
+Epoch: 000 | Loss: 3.419 | Validation time: 12s744ms
+Epoch: 000 | Loss: 3.391 | Testing time: 12s666ms
+==> Epoch: 001
 Epoch: 001 | Loss: 3.188 | Training time: 1m32s
-Epoch: 001 | Loss: 3.071 | Validation time: 12s761ms
-Epoch: 001 | Loss: 3.038 | Testing time: 12s653ms
+Epoch: 001 | Loss: 3.071 | Validation time: 12s809ms
+Epoch: 001 | Loss: 3.038 | Testing time: 12s680ms
+==> Epoch: 002
 Epoch: 002 | Loss: 2.914 | Training time: 1m32s
-Epoch: 002 | Loss: 2.911 | Validation time: 12s825ms
-Epoch: 002 | Loss: 2.872 | Testing time: 12s719ms
-Epoch: 003 | Loss: 2.753 | Training time: 1m32s
-Epoch: 003 | Loss: 2.811 | Validation time: 12s833ms
-Epoch: 003 | Loss: 2.769 | Testing time: 12s671ms
-Epoch: 004 | Loss: 2.635 | Training time: 1m32s
-Epoch: 004 | Loss: 2.744 | Validation time: 12s716ms
-Epoch: 004 | Loss: 2.704 | Testing time: 12s856ms
-Epoch: 005 | Loss: 2.545 | Training time: 1m32s
-Epoch: 005 | Loss: 2.696 | Validation time: 12s689ms
-Epoch: 005 | Loss: 2.652 | Testing time: 12s686ms
+Epoch: 002 | Loss: 2.911 | Validation time: 12s902ms
+Epoch: 002 | Loss: 2.872 | Testing time: 12s729ms
+==> Epoch: 003
+Epoch: 003 | Loss: 2.753 | Training time: 1m31s
+Epoch: 003 | Loss: 2.811 | Validation time: 12s760ms
+Epoch: 003 | Loss: 2.769 | Testing time: 12s760ms
+==> Epoch: 004
+Epoch: 004 | Loss: 2.635 | Training time: 1m31s
+Epoch: 004 | Loss: 2.744 | Validation time: 13s90ms
+Epoch: 004 | Loss: 2.704 | Testing time: 12s673ms
+==> Epoch: 005
+Epoch: 005 | Loss: 2.545 | Training time: 1m31s
+Epoch: 005 | Loss: 2.696 | Validation time: 12s973ms
+Epoch: 005 | Loss: 2.652 | Testing time: 12s675ms
+==> Epoch: 006
 Epoch: 006 | Loss: 2.469 | Training time: 1m32s
-Epoch: 006 | Loss: 2.657 | Validation time: 12s885ms
-Epoch: 006 | Loss: 2.613 | Testing time: 12s761ms
-Epoch: 007 | Loss: 2.406 | Training time: 1m32s
-Epoch: 007 | Loss: 2.630 | Validation time: 12s708ms
-Epoch: 007 | Loss: 2.585 | Testing time: 12s613ms
+Epoch: 006 | Loss: 2.657 | Validation time: 12s952ms
+Epoch: 006 | Loss: 2.613 | Testing time: 12s779ms
+==> Epoch: 007
+Epoch: 007 | Loss: 2.406 | Training time: 1m31s
+Epoch: 007 | Loss: 2.630 | Validation time: 12s912ms
+Epoch: 007 | Loss: 2.585 | Testing time: 12s771ms
+==> Epoch: 008
 Epoch: 008 | Loss: 2.348 | Training time: 1m32s
-Epoch: 008 | Loss: 2.615 | Validation time: 12s830ms
-Epoch: 008 | Loss: 2.567 | Testing time: 12s718ms
+Epoch: 008 | Loss: 2.615 | Validation time: 12s843ms
+Epoch: 008 | Loss: 2.567 | Testing time: 12s709ms
+==> Epoch: 009
 Epoch: 009 | Loss: 2.295 | Training time: 1m32s
-Epoch: 009 | Loss: 2.591 | Validation time: 12s771ms
-Epoch: 009 | Loss: 2.545 | Testing time: 12s548ms
+Epoch: 009 | Loss: 2.591 | Validation time: 12s920ms
+Epoch: 009 | Loss: 2.545 | Testing time: 12s680ms
+==> Epoch: 010
 Epoch: 010 | Loss: 2.249 | Training time: 1m32s
-Epoch: 010 | Loss: 2.574 | Validation time: 12s943ms
-Epoch: 010 | Loss: 2.531 | Testing time: 12s749ms
-Epoch: 011 | Loss: 2.205 | Training time: 1m31s
-Epoch: 011 | Loss: 2.570 | Validation time: 13s19ms
-Epoch: 011 | Loss: 2.521 | Testing time: 12s711ms
+Epoch: 010 | Loss: 2.574 | Validation time: 12s925ms
+Epoch: 010 | Loss: 2.531 | Testing time: 12s688ms
+==> Epoch: 011
+Epoch: 011 | Loss: 2.205 | Training time: 1m32s
+Epoch: 011 | Loss: 2.570 | Validation time: 12s834ms
+Epoch: 011 | Loss: 2.521 | Testing time: 12s767ms
+==> Epoch: 012
 Epoch: 012 | Loss: 2.165 | Training time: 1m32s
-Epoch: 012 | Loss: 2.562 | Validation time: 12s773ms
-Epoch: 012 | Loss: 2.516 | Testing time: 12s864ms
-Epoch: 013 | Loss: 2.125 | Training time: 1m32s
-Epoch: 013 | Loss: 2.550 | Validation time: 12s835ms
-Epoch: 013 | Loss: 2.503 | Testing time: 12s696ms
+Epoch: 012 | Loss: 2.562 | Validation time: 12s877ms
+Epoch: 012 | Loss: 2.516 | Testing time: 12s672ms
+==> Epoch: 013
+Epoch: 013 | Loss: 2.125 | Training time: 1m31s
+Epoch: 013 | Loss: 2.550 | Validation time: 13s8ms
+Epoch: 013 | Loss: 2.503 | Testing time: 12s633ms
+==> Epoch: 014
 Epoch: 014 | Loss: 2.091 | Training time: 1m31s
-Epoch: 014 | Loss: 2.550 | Validation time: 12s932ms
-Epoch: 014 | Loss: 2.504 | Testing time: 12s691ms
+Epoch: 014 | Loss: 2.550 | Validation time: 12s902ms
+Epoch: 014 | Loss: 2.504 | Testing time: 12s733ms
+==> Epoch: 015
 Epoch: 015 | Loss: 2.058 | Training time: 1m32s
-Epoch: 015 | Loss: 2.548 | Validation time: 12s897ms
-Epoch: 015 | Loss: 2.500 | Testing time: 12s714ms
+Epoch: 015 | Loss: 2.548 | Validation time: 12s777ms
+Epoch: 015 | Loss: 2.500 | Testing time: 12s651ms
+==> Epoch: 016
 Epoch: 016 | Loss: 2.025 | Training time: 1m31s
-Epoch: 016 | Loss: 2.544 | Validation time: 12s823ms
+Epoch: 016 | Loss: 2.544 | Validation time: 12s962ms
+Epoch: 016 | Loss: 2.495 | Testing time: 12s739ms
+==> Epoch: 017
+Epoch: 017 | Loss: 1.996 | Training time: 1m32s
+Epoch: 017 | Loss: 2.544 | Validation time: 12s932ms
+Epoch: 017 | Loss: 2.495 | Testing time: 12s704ms
+==> Epoch: 018
+Epoch: 018 | Loss: 1.964 | Training time: 1m32s
+Epoch: 018 | Loss: 2.546 | Validation time: 12s810ms
+Epoch: 018 | Loss: 2.496 | Testing time: 12s925ms
+==> Epoch: 019
+Epoch: 019 | Loss: 1.939 | Training time: 1m32s
+Epoch: 019 | Loss: 2.540 | Validation time: 13s96ms
+Epoch: 019 | Loss: 2.494 | Testing time: 12s841ms
+==> Epoch: 020
+Epoch: 020 | Loss: 1.911 | Training time: 1m31s
+Epoch: 020 | Loss: 2.541 | Validation time: 12s951ms
+Epoch: 020 | Loss: 2.488 | Testing time: 12s778ms
+==> Epoch: 021
+Epoch: 021 | Loss: 1.885 | Training time: 1m31s
+Epoch: 021 | Loss: 2.546 | Validation time: 12s930ms
+Epoch: 021 | Loss: 2.498 | Testing time: 12s661ms
+==> Epoch: 022
+Epoch: 022 | Loss: 1.860 | Training time: 1m32s
+Epoch: 022 | Loss: 2.552 | Validation time: 12s815ms
+Epoch: 022 | Loss: 2.501 | Testing time: 12s757ms
+==> Epoch: 023
+Epoch: 023 | Loss: 1.835 | Training time: 1m32s
+Epoch: 023 | Loss: 2.556 | Validation time: 13s123ms
+Epoch: 023 | Loss: 2.501 | Testing time: 12s596ms
+==> Epoch: 024
+Epoch: 024 | Loss: 1.811 | Training time: 1m31s
+Epoch: 024 | Loss: 2.565 | Validation time: 12s907ms
+Epoch: 024 | Loss: 2.514 | Testing time: 12s791ms
+Total Time: 49m34s
+==> Saving training/validation/testing loss...
+==> Drawing loss and acc...
+==> Process finished.
