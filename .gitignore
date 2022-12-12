@@ -1,4 +1,5 @@
 input/
 dataset/flickr8k/Images
+results/**/*.pth
 __pycache__/
 .DS_Store

@@ -2,10 +2,6 @@
 import os
 from collections import Counter
 import numpy as np
-<<<<<<< HEAD
-=======
-import pandas as pd
->>>>>>> 5dca66cac6a594c72e2057ac3183ba3355a80692
 import spacy
 import torch
 from torch.nn.utils.rnn import pad_sequence
@@ -66,11 +62,11 @@ class FlickrDataset(Dataset):
         self.transform = transform
 
         with open(caption_file, "r") as f:
-            data = f.read()
+            self.data = f.read()
 
         self.imgs = []
         self.captions = []
-        for sample in data.split("\n"):
+        for sample in self.data.split("\n"):
             tokens = sample.split()
             if len(sample) < 2:
                 # Image has no description: Invalid data row
@@ -90,6 +86,7 @@ class FlickrDataset(Dataset):
         else: 
             self.vocab = vocab
         
+        self.inference_captions = self.group_captions(self.data)
     
     def __len__(self):
         return len(self.captions)
@@ -114,6 +111,73 @@ class FlickrDataset(Dataset):
         
         return img, torch.tensor(caption_vec)
 
+    def group_captions(self, data):
+        """Groups captions which correspond to the same image.
+
+        Main usage: Calculating BLEU score
+
+        Arguments:
+            data (list of str): Each element contains image name and corresponding caption
+        Returns:
+            grouped_captions (dict): Key - image name, Value - list of captions associated
+                with that picture
+        """
+        grouped_captions = {}
+
+        for line in data:
+            caption_data = line.split()
+            image_name, image_caption = caption_data[0], caption_data[1:]
+            image_id = image_name.split(".")[0] + '.jpg'
+            if image_id not in grouped_captions:
+                # We came across the first caption for this particular image
+                grouped_captions[image_id] = []
+
+            grouped_captions[image_id].append(image_caption)
+
+        return grouped_captions
+    
+    def load_and_prepare_image(self, image_name):
+        """Performs image preprocessing.
+
+        Images need to be prepared for the ResNet encoder.
+        Arguments:
+            image_name (str): Name of the image file located in the subset directory
+        """
+        image_path = os.path.join(self.root_dir, image_name)
+        img_pil = Image.open(image_path).convert("RGB")
+        if self.transform is not None:
+            image_tensor = self.transform(img_pil)
+        return image_tensor
+
+    def inference_batch(self, batch_size):
+        """Creates a mini batch dataloader for inference.
+
+        During inference we generate caption from scratch and in each iteration
+        we feed words generated previously by the model (i.e. no teacher forcing).
+        We only need input image as well as the target caption.
+        """
+        caption_data_items = list(self.inference_captions.items())
+
+        num_batches = len(caption_data_items) // batch_size
+        for idx in range(num_batches):
+            caption_samples = caption_data_items[idx * batch_size: (idx + 1) * batch_size]
+            batch_imgs = []
+            batch_captions = []
+
+            # Increase index for the next batch
+            idx += batch_size
+
+            # Create a mini batch data
+            for image_name, captions in caption_samples:
+                batch_captions.append(captions)
+                batch_imgs.append(self.load_and_prepare_image(image_name))
+
+            # Batch image tensors
+            batch_imgs = torch.stack(batch_imgs, dim=0)
+            if batch_size == 1:
+                batch_imgs = batch_imgs.unsqueeze(0)
+
+            yield batch_imgs, batch_captions
 
 class CapsCollate:
     """
@@ -159,8 +223,4 @@ def get_data_loader(dataset,batch_size,shuffle=False,num_workers=1):
         collate_fn=collate_fn
     )
 
-<<<<<<< HEAD
     return data_loader
-=======
-    return data_loader
->>>>>>> 5dca66cac6a594c72e2057ac3183ba3355a80692
