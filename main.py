@@ -12,7 +12,7 @@ from nltk.translate.bleu_score import corpus_bleu
 from data_loader import FlickrDataset, get_data_loader
 from utils import save_image, format_time, save_dict, plot_loss, plot_bleu_scores
 from models import *
-
+from test_case import test_cases
 
 if __name__ == '__main__':
 
@@ -25,6 +25,7 @@ if __name__ == '__main__':
     torch.manual_seed(0)
     np.random.seed(0)
     exp_num = args.exp_num
+    config = test_cases(exp_num)
     result_dir = './results/exp_{:03d}'.format(exp_num)
     if not os.path.isdir(result_dir):
         os.mkdir(result_dir)
@@ -60,28 +61,28 @@ if __name__ == '__main__':
 
     # testing the dataset class
     dataset =  FlickrDataset(
-        root_dir = data_location+"/Images",
-        caption_file = data_location+"/Flickr8k.token.txt",
+        root_dir = config["image_path"],
+        caption_file = config["all_caption_data_path"],
         transform=transforms
     )
 
     train_dataset =  FlickrDataset(
-        root_dir = data_location+"/Images",
-        caption_file = data_location+"/train.txt",
+        root_dir = config["image_path"],
+        caption_file = config["train_data_path"],
         transform=transforms,
         vocab=dataset.vocab
     )
 
     test_dataset =  FlickrDataset(
-        root_dir = data_location+"/Images",
-        caption_file = data_location+"/test.txt",
+        root_dir = config["image_path"],
+        caption_file = config["test_data_path"],
         transform=transforms,
         vocab=dataset.vocab
     )
 
     validation_dataset =  FlickrDataset(
-        root_dir = data_location+"/Images",
-        caption_file = data_location+"/validation.txt",
+        root_dir = config["image_path"],
+        caption_file = config["validation_data_path"],
         transform=transforms,
         vocab=dataset.vocab
     )
@@ -305,7 +306,37 @@ if __name__ == '__main__':
     plot_loss(train_loss, validation_loss, test_loss, loss_path)
     plot_bleu_scores(validation_bleu_scores, os.path.join(result_dir, "validation_bleu_scores.png"))
     plot_bleu_scores(test_bleu_scores, os.path.join(result_dir, "test_bleu_scores.png"))
-    
+
+    print("==> Drawing samples...")
+    model.eval()
+    with torch.no_grad():
+        dataiter = iter(test_data_loader)
+        img, _ = next(dataiter)
+        for i in range(10):
+            image = img[i:i+1].to(device)
+            features = model.encoder(image)
+            caps, alphas = model.decoder.generate_caption_one(features,vocab=dataset.vocab)
+            caption = ' '.join(caps)
+            save_image(img[0], os.path.join(result_dir, "test_{:03d}".format(i)), title=caption)
+
+        dataiter = iter(validation_data_loader)
+        img, _ = next(dataiter)
+        for i in range(10):
+            image = img[i:i+1].to(device)
+            features = model.encoder(image)
+            caps, alphas = model.decoder.generate_caption_one(features,vocab=dataset.vocab)
+            caption = ' '.join(caps)
+            save_image(img[0], os.path.join(result_dir, "validation_{:03d}".format(i)), title=caption) 
+
+        dataiter = iter(train_data_loader)
+        img, _ = next(dataiter)
+        for i in range(10):
+            image = img[i:i+1].to(device)
+            features = model.encoder(image)
+            caps, alphas = model.decoder.generate_caption_one(features,vocab=dataset.vocab)
+            caption = ' '.join(caps)
+            save_image(img[0], os.path.join(result_dir, "train_{:03d}".format(i)), title=caption)  
+
     print("==> Process finished.")
 
 
