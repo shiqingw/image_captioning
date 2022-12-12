@@ -257,8 +257,6 @@ if __name__ == '__main__':
             # Get the caption prediction for each image in the mini-batch
             references_total += y_caption
             predictions_total += predictions
-        print(references_total)
-        print(predictions_total)
         epoch_end_time = time.time()
         # Evaluate BLEU score of the generated captions
         bleu_1 = corpus_bleu(references_total, predictions_total, weights=bleu_w["bleu-1"]) * 100
