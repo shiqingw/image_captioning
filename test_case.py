@@ -20,7 +20,7 @@ def test_cases(num):
             "train_data_path": data_location + "/train.txt",
             "test_data_path": data_location + "/test.txt",
             "validation_data_path": data_location + "/validation.txt",
-            "optimizer":"SGD",
+            "optimizer":"AdamW",
             "num_epochs": 25,
             "learning_rate": 3e-4
                 }
@@ -46,7 +46,7 @@ def test_cases(num):
             "train_data_path": data_location + "/train.txt",
             "test_data_path": data_location + "/test.txt",
             "validation_data_path": data_location + "/validation.txt",
-            "optimizer":"SGD",
+            "optimizer":"AdamW",
             "num_epochs": 40,
             "learning_rate": 1e-4
                 }

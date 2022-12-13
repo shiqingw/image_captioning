@@ -134,8 +134,8 @@ if __name__ == '__main__':
     criterion = nn.CrossEntropyLoss(ignore_index=dataset.vocab.stoi["<PAD>"])
     if config["optimizer"] == "Adam":
         optimizer = optim.Adam(model.parameters(), lr=learning_rate)
-    elif config["optimizer"] == "SGD":
-        optimizer = optim.SGD(model.parameters(), lr=learning_rate)
+    elif config["optimizer"] == "AdamW":
+        optimizer = optim.AdamW(model.parameters(), lr=learning_rate)
     else: raise ValueError("Optimizer not defined!")
 
     num_epochs = config["num_epochs"]
