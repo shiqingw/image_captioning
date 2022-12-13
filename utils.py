@@ -1,9 +1,18 @@
 import matplotlib.pyplot as plt
 import pickle
+from matplotlib import rcParams
+from textwrap import wrap
 
-def save_image(img, full_path, title=None):
+def save_image(img, full_path, caption=None):
     """Imshow for Tensor."""
     fig = plt.figure(figsize=(10, 10), dpi=100, frameon=True)
+    plt.rc('text', usetex=True)
+    plt.rc('font', family='serif')
+    ax = plt.subplot(111)
+
+    if caption is not None:
+        title = ax.set_title("\n".join(wrap(caption, 45)), fontsize=30)
+
     #unnormalize 
     img[0] = img[0] * 0.229
     img[1] = img[1] * 0.224 
@@ -14,12 +23,14 @@ def save_image(img, full_path, title=None):
     
     img = img.numpy().transpose((1, 2, 0))
     
-    plt.imshow(img)
-    if title is not None:
-        plt.title(title, wrap=True, fontsize=25)
-    # plt.tight_layout()
+    ax.imshow(img)
+    ax.axis('off')
+    fig.tight_layout()
+    title.set_y(1.05)
+    fig.subplots_adjust(top=0.8)
     plt.savefig(full_path, dpi = 100)
     plt.close(fig)
+    return
 
 
 def save_dict(dict_obj, fullname):

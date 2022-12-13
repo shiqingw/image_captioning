@@ -17,7 +17,7 @@ from test_case import test_cases
 if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description='ResNet+LSTM')
-    parser.add_argument('--exp_num', default=1, type=int, help='test case number')
+    parser.add_argument('--exp_num', default=0, type=int, help='test case number')
     parser.add_argument('--resume', '-r', action='store_true',
                         help='resume from checkpoint')
     args = parser.parse_args()
@@ -119,7 +119,7 @@ if __name__ == '__main__':
     attention_dim=256
     encoder_dim=2048
     decoder_dim=512
-    learning_rate = 3e-4
+    learning_rate = config["learning_rate"]
 
     #init model
     model = EncoderDecoder(
@@ -134,7 +134,7 @@ if __name__ == '__main__':
     criterion = nn.CrossEntropyLoss(ignore_index=dataset.vocab.stoi["<PAD>"])
     optimizer = optim.Adam(model.parameters(), lr=learning_rate)
 
-    num_epochs = 25
+    num_epochs = config["num_epochs"]
     train_loss = []
     validation_loss = []
     test_loss = []
@@ -279,9 +279,41 @@ if __name__ == '__main__':
         train(epoch, train_loss)
         validate(epoch, validation_loss)
         calculate_bleu(epoch, validation_dataset, model, device, validation_bleu_scores)
-        best_loss = test(epoch, test_loss, best_loss)
+        best_loss_new = test(epoch, test_loss, best_loss)
         calculate_bleu(epoch, test_dataset, model, device, test_bleu_scores)
 
+        if best_loss_new < best_loss:
+            print("==> Drawing samples...")
+            model.eval()
+            
+            dataiter = iter(test_data_loader)
+            img, _ = next(dataiter)
+            for i in range(10):
+                image = img[5*i:5*i+1]
+                features = model.encoder(image.to(device))
+                caps, alphas = model.decoder.generate_caption_one(features,vocab=dataset.vocab)
+                caption = ' '.join(caps)
+                save_image(image[0], os.path.join(result_dir, "test_{:03d}".format(i)), caption=caption)
+
+            dataiter = iter(validation_data_loader)
+            img, _ = next(dataiter)
+            for i in range(10):
+                image = img[5*i:5*i+1]
+                features = model.encoder(image.to(device))
+                caps, alphas = model.decoder.generate_caption_one(features,vocab=dataset.vocab)
+                caption = ' '.join(caps)
+                save_image(image[0], os.path.join(result_dir, "validation_{:03d}".format(i)), caption=caption) 
+
+            dataiter = iter(train_data_loader)
+            img, _ = next(dataiter)
+            for i in range(10):
+                image = img[5*i:5*i+1]
+                features = model.encoder(image.to(device))
+                caps, alphas = model.decoder.generate_caption_one(features,vocab=dataset.vocab)
+                caption = ' '.join(caps)
+                save_image(image[0], os.path.join(result_dir, "train_{:03d}".format(i)), caption=caption)  
+
+        best_loss = best_loss_new
         #generate the caption
         model.eval()
         with torch.no_grad():
@@ -291,7 +323,7 @@ if __name__ == '__main__':
             features = model.encoder(image)
             caps, alphas = model.decoder.generate_caption_one(features,vocab=dataset.vocab)
             caption = ' '.join(caps)
-            save_image(img[0], os.path.join(result_dir, "epoch_{:03d}".format(epoch)), title=caption)     
+            save_image(img[0], os.path.join(result_dir, "epoch_{:03d}".format(epoch)), caption=caption)     
         
     stop_time = time.time()
     print("Total Time: %s" % format_time(stop_time - start_time))
@@ -306,36 +338,6 @@ if __name__ == '__main__':
     plot_loss(train_loss, validation_loss, test_loss, loss_path)
     plot_bleu_scores(validation_bleu_scores, os.path.join(result_dir, "validation_bleu_scores.png"))
     plot_bleu_scores(test_bleu_scores, os.path.join(result_dir, "test_bleu_scores.png"))
-
-    print("==> Drawing samples...")
-    model.eval()
-    with torch.no_grad():
-        dataiter = iter(test_data_loader)
-        img, _ = next(dataiter)
-        for i in range(10):
-            image = img[i:i+1].to(device)
-            features = model.encoder(image)
-            caps, alphas = model.decoder.generate_caption_one(features,vocab=dataset.vocab)
-            caption = ' '.join(caps)
-            save_image(img[0], os.path.join(result_dir, "test_{:03d}".format(i)), title=caption)
-
-        dataiter = iter(validation_data_loader)
-        img, _ = next(dataiter)
-        for i in range(10):
-            image = img[i:i+1].to(device)
-            features = model.encoder(image)
-            caps, alphas = model.decoder.generate_caption_one(features,vocab=dataset.vocab)
-            caption = ' '.join(caps)
-            save_image(img[0], os.path.join(result_dir, "validation_{:03d}".format(i)), title=caption) 
-
-        dataiter = iter(train_data_loader)
-        img, _ = next(dataiter)
-        for i in range(10):
-            image = img[i:i+1].to(device)
-            features = model.encoder(image)
-            caps, alphas = model.decoder.generate_caption_one(features,vocab=dataset.vocab)
-            caption = ' '.join(caps)
-            save_image(img[0], os.path.join(result_dir, "train_{:03d}".format(i)), title=caption)  
 
     print("==> Process finished.")
 
