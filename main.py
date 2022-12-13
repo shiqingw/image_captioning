@@ -132,18 +132,26 @@ if __name__ == '__main__':
     ).to(device)
 
     criterion = nn.CrossEntropyLoss(ignore_index=dataset.vocab.stoi["<PAD>"])
-    optimizer = optim.Adam(model.parameters(), lr=learning_rate)
+    if config["optimizer"] == "Adam":
+        optimizer = optim.Adam(model.parameters(), lr=learning_rate)
+    elif config["optimizer"] == "SGD":
+        optimizer = optim.SGD(model.parameters(), lr=learning_rate)
+    else: raise ValueError("Optimizer not defined!")
 
     num_epochs = config["num_epochs"]
     train_loss = []
     validation_loss = []
     test_loss = []
-    best_loss = np.inf
+    best_bleu_4 = 0
     validation_bleu_scores = {"bleu-1": [],
                 "bleu-2": [],
                 "bleu-3": [],
                 "bleu-4": []}
     test_bleu_scores = {"bleu-1": [],
+                "bleu-2": [],
+                "bleu-3": [],
+                "bleu-4": []}
+    train_bleu_scores = {"bleu-1": [],
                 "bleu-2": [],
                 "bleu-3": [],
                 "bleu-4": []}
@@ -193,7 +201,7 @@ if __name__ == '__main__':
          epoch_validation_loss/(batch_idx+1), format_time(epoch_end_time - epoch_start_time)))
         validation_loss += [epoch_validation_loss/(batch_idx+1)]
 
-    def test(epoch, test_loss, best_loss): 
+    def test(epoch, test_loss): 
         model.eval()
         epoch_test_loss = 0
         epoch_start_time = time.time()
@@ -209,20 +217,6 @@ if __name__ == '__main__':
          epoch_test_loss/(batch_idx+1), format_time(epoch_end_time - epoch_start_time)))
         test_loss += [epoch_test_loss/(batch_idx+1)]
 
-        if epoch_test_loss/(batch_idx+1) < best_loss:
-            best_loss = epoch_test_loss/(batch_idx+1)
-            model_state = {
-                    'num_epochs':num_epochs,
-                    'embed_size':embed_size,
-                    'vocab_size':len(dataset.vocab),
-                    'attention_dim':attention_dim,
-                    'encoder_dim':encoder_dim,
-                    'decoder_dim':decoder_dim,
-                    'state_dict':model.state_dict()
-                }
-            print("==> Saving...")
-            torch.save(model_state, os.path.join(result_dir, "bahdanau_attention_model_state.pth"))
-        return best_loss
 
     def calculate_bleu(epoch, subset, model, device, bleu_scores_dict):
         """Evaluates (BLEU score) caption generation model on a given subset.
@@ -278,11 +272,26 @@ if __name__ == '__main__':
         print("==> Epoch: {:03d}".format(epoch))
         train(epoch, train_loss)
         validate(epoch, validation_loss)
+        test(epoch, test_loss)
+        calculate_bleu(epoch, train_dataset, model, device, train_bleu_scores)
         calculate_bleu(epoch, validation_dataset, model, device, validation_bleu_scores)
-        best_loss_new = test(epoch, test_loss, best_loss)
         calculate_bleu(epoch, test_dataset, model, device, test_bleu_scores)
 
-        if best_loss_new < best_loss:
+        new_bleu_4 = test_bleu_scores["bleu-4"][-1]
+        if new_bleu_4 > best_bleu_4 :
+            best_bleu_4 = new_bleu_4
+            model_state = {
+                    'num_epochs':num_epochs,
+                    'embed_size':embed_size,
+                    'vocab_size':len(dataset.vocab),
+                    'attention_dim':attention_dim,
+                    'encoder_dim':encoder_dim,
+                    'decoder_dim':decoder_dim,
+                    'state_dict':model.state_dict()
+                }
+            print("==> Saving...")
+            torch.save(model_state, os.path.join(result_dir, "bahdanau_attention_model_state.pth"))
+
             print("==> Drawing samples...")
             model.eval()
             
@@ -313,7 +322,6 @@ if __name__ == '__main__':
                 caption = ' '.join(caps)
                 save_image(image[0], os.path.join(result_dir, "train_{:03d}".format(i)), caption=caption)  
 
-        best_loss = best_loss_new
         #generate the caption
         model.eval()
         with torch.no_grad():
@@ -336,6 +344,7 @@ if __name__ == '__main__':
     print("==> Drawing loss and bleu scores...")
     loss_path = os.path.join(result_dir, "loss.png")
     plot_loss(train_loss, validation_loss, test_loss, loss_path)
+    plot_bleu_scores(train_bleu_scores, os.path.join(result_dir, "train_bleu_scores.png"))
     plot_bleu_scores(validation_bleu_scores, os.path.join(result_dir, "validation_bleu_scores.png"))
     plot_bleu_scores(test_bleu_scores, os.path.join(result_dir, "test_bleu_scores.png"))
 

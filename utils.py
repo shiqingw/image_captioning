@@ -7,10 +7,12 @@ def save_image(img, full_path, caption=None):
     """Imshow for Tensor."""
     fig = plt.figure(figsize=(10, 10), dpi=100, frameon=True)
     plt.rc('text', usetex=True)
-    plt.rc('font', family='serif')
+    plt.rc('font', family='sans-serif')
     ax = plt.subplot(111)
 
     if caption is not None:
+        caption = caption.capitalize()
+        caption = caption.replace("<unk>","[UNK]")
         title = ax.set_title("\n".join(wrap(caption, 45)), fontsize=30)
 
     #unnormalize 
@@ -25,7 +27,7 @@ def save_image(img, full_path, caption=None):
     
     ax.imshow(img)
     ax.axis('off')
-    fig.tight_layout()
+    # fig.tight_layout()
     title.set_y(1.05)
     fig.subplots_adjust(top=0.8)
     plt.savefig(full_path, dpi = 100)
