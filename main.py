@@ -54,7 +54,7 @@ if __name__ == '__main__':
     # defining the transform to be applied
     transforms = T.Compose([
         T.Resize(226),                     
-        T.RandomCrop(224),                 
+        T.CenterCrop(224),                 
         T.ToTensor(),                               
         T.Normalize((0.485, 0.456, 0.406),(0.229, 0.224, 0.225))
     ])
@@ -148,10 +148,6 @@ if __name__ == '__main__':
                 "bleu-3": [],
                 "bleu-4": []}
     test_bleu_scores = {"bleu-1": [],
-                "bleu-2": [],
-                "bleu-3": [],
-                "bleu-4": []}
-    train_bleu_scores = {"bleu-1": [],
                 "bleu-2": [],
                 "bleu-3": [],
                 "bleu-4": []}
@@ -273,7 +269,7 @@ if __name__ == '__main__':
         train(epoch, train_loss)
         validate(epoch, validation_loss)
         test(epoch, test_loss)
-        calculate_bleu(epoch, train_dataset, model, device, train_bleu_scores)
+        
         calculate_bleu(epoch, validation_dataset, model, device, validation_bleu_scores)
         calculate_bleu(epoch, test_dataset, model, device, test_bleu_scores)
 
@@ -281,6 +277,10 @@ if __name__ == '__main__':
         if new_bleu_4 > best_bleu_4 :
             best_bleu_4 = new_bleu_4
             model_state = {
+                    'bleu-1': test_bleu_scores["bleu-1"][-1],
+                    'bleu-2': test_bleu_scores["bleu-2"][-1],
+                    'bleu-3': test_bleu_scores["bleu-3"][-1],
+                    'bleu-4': test_bleu_scores["bleu-4"][-1],
                     'num_epochs':num_epochs,
                     'embed_size':embed_size,
                     'vocab_size':len(dataset.vocab),
@@ -344,7 +344,7 @@ if __name__ == '__main__':
     print("==> Drawing loss and bleu scores...")
     loss_path = os.path.join(result_dir, "loss.png")
     plot_loss(train_loss, validation_loss, test_loss, loss_path)
-    plot_bleu_scores(train_bleu_scores, os.path.join(result_dir, "train_bleu_scores.png"))
+
     plot_bleu_scores(validation_bleu_scores, os.path.join(result_dir, "validation_bleu_scores.png"))
     plot_bleu_scores(test_bleu_scores, os.path.join(result_dir, "test_bleu_scores.png"))
 

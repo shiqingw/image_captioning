@@ -1,1 +1,332 @@
 nohup: ignoring input
+Traceback (most recent call last):
+  File "main.py", line 347, in <module>
+    plot_bleu_scores(train_bleu_scores, os.path.join(result_dir, "train_bleu_scores.png"))
+NameError: name 'train_bleu_scores' is not defined
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 3-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 4-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 2-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 2-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 3-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 4-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 3-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 4-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 3-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 4-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 3-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 4-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 3-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 4-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 3-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 4-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 3-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 4-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 3-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 4-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 3-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 4-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 2-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 2-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 3-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 4-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 2-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 3-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 4-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+Traceback (most recent call last):
+  File "main.py", line 347, in <module>
+    plot_bleu_scores(train_bleu_scores, os.path.join(result_dir, "train_bleu_scores.png"))
+NameError: name 'train_bleu_scores' is not defined
+Traceback (most recent call last):
+  File "main.py", line 347, in <module>
+    plot_bleu_scores(train_bleu_scores, os.path.join(result_dir, "train_bleu_scores.png"))
+NameError: name 'train_bleu_scores' is not defined
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 2-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 3-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 4-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 2-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 3-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 4-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 2-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 3-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 4-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 2-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 3-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 4-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 2-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 3-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 4-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 2-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 3-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 4-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 2-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 3-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 4-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 3-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 4-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+/data/shiqing/venv_py37/lib/python3.7/site-packages/nltk/translate/bleu_score.py:552: UserWarning: 
+The hypothesis contains 0 counts of 2-gram overlaps.
+Therefore the BLEU score evaluates to 0, independently of
+how many N-gram overlaps of lower order it contains.
+Consider using lower n-gram order or use SmoothingFunction()
+  warnings.warn(_msg)
+run_test_cases.sh: line 4:  8146 Terminated              python3 -u main.py --exp_num 4 > results/exp_004/output.out
