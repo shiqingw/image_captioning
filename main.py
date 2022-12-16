@@ -119,7 +119,6 @@ if __name__ == '__main__':
     attention_dim=256
     encoder_dim=2048
     decoder_dim=512
-    learning_rate = config["learning_rate"]
 
     #init model
     model = EncoderDecoder(
@@ -133,10 +132,19 @@ if __name__ == '__main__':
 
     criterion = nn.CrossEntropyLoss(ignore_index=dataset.vocab.stoi["<PAD>"])
     if config["optimizer"] == "Adam":
-        optimizer = optim.Adam(model.parameters(), lr=learning_rate)
+        optimizer = optim.Adam(model.parameters(), lr=config["learning_rate"], weight_decay=config["weight_decay"])
     elif config["optimizer"] == "AdamW":
-        optimizer = optim.AdamW(model.parameters(), lr=learning_rate)
+        optimizer = optim.AdamW(model.parameters(), lr=config["learning_rate"], weight_decay=config["weight_decay"])
     else: raise ValueError("Optimizer not defined!")
+
+    # learning rate scheduler
+    if config["scheduler"] == "None":
+        scheduler = None
+    elif config["scheduler"] == "CosineAnnealingLR":
+        scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=config["num_epochs"])
+    else:
+        raise ValueError("Scheduler not defined!")
+
 
     num_epochs = config["num_epochs"]
     train_loss = []
@@ -269,6 +277,9 @@ if __name__ == '__main__':
         train(epoch, train_loss)
         validate(epoch, validation_loss)
         test(epoch, test_loss)
+
+        if scheduler != None:
+            scheduler.step()
         
         calculate_bleu(epoch, validation_dataset, model, device, validation_bleu_scores)
         calculate_bleu(epoch, test_dataset, model, device, test_bleu_scores)
