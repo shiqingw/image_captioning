@@ -97,7 +97,7 @@ if __name__ == '__main__':
     with open(sample_list_path, "r") as f:
         data = f.read()
     name_list = data.split("\n")
-    for i in range(30):
+    for i in range(50):
         img_name = name_list[i]
         img_location = os.path.join(config["image_path"],img_name)
         img = Image.open(img_location).convert("RGB")
