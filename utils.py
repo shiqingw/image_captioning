@@ -13,6 +13,7 @@ def save_image(img, full_path, caption=None):
     if caption is not None:
         caption = caption.capitalize()
         caption = caption.replace("<unk>","[UNK]")
+        caption = caption.replace(".", "")
         title = ax.set_title("\n".join(wrap(caption, 45)), fontsize=30)
 
     #unnormalize 

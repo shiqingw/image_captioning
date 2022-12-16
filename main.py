@@ -332,17 +332,6 @@ if __name__ == '__main__':
                 caps, alphas = model.decoder.generate_caption_one(features,vocab=dataset.vocab)
                 caption = ' '.join(caps)
                 save_image(image[0], os.path.join(result_dir, "train_{:03d}".format(i)), caption=caption)  
-
-        #generate the caption
-        model.eval()
-        with torch.no_grad():
-            dataiter = iter(train_data_loader)
-            img, _ = next(dataiter)
-            image = img[0:1].to(device)
-            features = model.encoder(image)
-            caps, alphas = model.decoder.generate_caption_one(features,vocab=dataset.vocab)
-            caption = ' '.join(caps)
-            save_image(img[0], os.path.join(result_dir, "epoch_{:03d}".format(epoch)), caption=caption)     
         
     stop_time = time.time()
     print("Total Time: %s" % format_time(stop_time - start_time))
