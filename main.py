@@ -63,7 +63,9 @@ if __name__ == '__main__':
     dataset =  FlickrDataset(
         root_dir = config["image_path"],
         caption_file = config["all_caption_data_path"],
-        transform=transforms
+        transform=transforms,
+        freq_threshold=config["freq_threshold"],
+        vocab=None
     )
 
     train_dataset =  FlickrDataset(
