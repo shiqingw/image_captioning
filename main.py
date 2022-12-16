@@ -46,9 +46,7 @@ if __name__ == '__main__':
     print('==> device: ', device)
 
     # location of the training data 
-    data_location =  "./dataset/flickr8k"
     BATCH_SIZE = 100
-    # BATCH_SIZE = 6
     NUM_WORKER = 4
 
     # defining the transform to be applied
