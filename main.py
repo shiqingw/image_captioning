@@ -135,6 +135,8 @@ if __name__ == '__main__':
         optimizer = optim.Adam(model.parameters(), lr=config["learning_rate"], weight_decay=config["weight_decay"])
     elif config["optimizer"] == "AdamW":
         optimizer = optim.AdamW(model.parameters(), lr=config["learning_rate"], weight_decay=config["weight_decay"])
+    elif config["optimizer"] == "SGD":
+        optimizer = optim.SGD(model.parameters(), lr=config["learning_rate"], weight_decay=config["weight_decay"])
     else: raise ValueError("Optimizer not defined!")
 
     # learning rate scheduler
