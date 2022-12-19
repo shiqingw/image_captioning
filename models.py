@@ -53,7 +53,7 @@ class Attention(nn.Module):
         alpha = F.softmax(attention_scores,dim=1)          #(batch_size,num_layers)
         
         attention_weights = features * alpha.unsqueeze(2)  #(batch_size,num_layers,features_dim)
-        attention_weights = attention_weights.sum(dim=1)   #(batch_size,num_layers)
+        attention_weights = attention_weights.sum(dim=1)   #(batch_size,features_dim)
         
         return alpha,attention_weights
 
